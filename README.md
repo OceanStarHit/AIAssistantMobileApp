@@ -1,24 +1,9 @@
-<h1 align="center">
-    AI Assistant Mobile App
-</h1>
+# NativeBase TypeScript Expo Template
 
-## Installation
+The official NativeBase TypeScript template for [Expo](https://docs.expo.io/)
 
-```bash
-yarn install
-```
+## Usage
 
-## Get Started
-```bash
-yarn start
-```
-You can also start project for Android, iOS and Web following these commands.
-```bash
-yarn android
-```
-```bash
-yarn iOS
-```
-```bash
-yarn web
+```sh
+expo init my-app --template @native-base/expo-template-typescript
 ```
