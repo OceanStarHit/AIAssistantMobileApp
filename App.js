@@ -2,8 +2,8 @@ import React from "react";
 import {
   NativeBaseProvider,
 } from "native-base";
-import HomeScreen from "./src/HomeScreen/HomeScreen";
-import SignInScreen from "./src/HomeScreen/SignInScreen";
+import HomeScreen from "./src/pages/HomeScreen";
+import SignInScreen from './src/pages/SignInScreen';
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
@@ -22,7 +22,8 @@ const AppNavigator = createStackNavigator(
         backgroundColor: 'rgba(254, 252, 254, 1)'
       }
     }
-  }
+  },
+  {initialRouteName: "Home"}
 );
 
 const Navigator = createAppContainer(AppNavigator);

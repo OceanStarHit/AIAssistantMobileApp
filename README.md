@@ -4,21 +4,21 @@
 
 ## Installation
 ```bash
-yarn install
+npm install
 ````
 ## Run the project
 ```bash
-yarn start
+npm run start
 ````
 Android
 ```bash
-yarn android
+npm run android
 ````
 iOS
 ```bash
-yarn ios
+npm run ios
 ````
 Web
 ```bash
-yarn web
+npm run web
 ````

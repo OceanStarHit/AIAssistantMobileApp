@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 import { MaterialIcons  } from "@expo/vector-icons";
 import {
   Item,
@@ -17,7 +17,6 @@ import {
   Flex, 
   Modal, 
   FormControl, 
-  InfoIcon,
   CloseIcon,
   CheckCircleIcon,
   Pressable
@@ -40,11 +39,13 @@ var styles = StyleSheet.create({
     color: '#ffffff',
   },
   continueBox: {
-    width: '80%',
+    width: '90%',
     color: '#a3a3a3',
+    marginLeft: '5%',
+    marginTop: 10
   },
   divider: {
-    width: '40%'
+    width: '30%'
   },
   imageBox: {
     backgroundColor: 'white',
@@ -74,6 +75,7 @@ const Home = (props: any) => {
   const [signModal, setSignModal] = useState<boolean>(false);
   const [step, setStep] = useState<number>(0);
   const [show, setShow] = useState<boolean>(false);
+  
 
   const openModal = (status: boolean, domain: string) => {
     if (domain === "apple") {
@@ -92,7 +94,7 @@ const Home = (props: any) => {
 
   return (
     <>
-      <View style={{ flex: 1, alignItems: "center"}}>
+      <View style={{ flex: 1}}>
         <Box mt={150}>
           <ZStack mt="3" alignItems="center" justifyContent="center" p={0}>
             <Image alt="animate_sphere" size="80" source={gif} />
@@ -100,51 +102,49 @@ const Home = (props: any) => {
           </ZStack>
         </Box>
         <Box mt={130}>
-          <FormControl>
+          <FormControl ml="5%">
             <FormControl.Label>Email</FormControl.Label>
             <Input w={{
               base: "90%",
-              md: "25%",
             }} 
             borderRadius={10}
             InputLeftElement={<Icon as={<MaterialIcons name="email" />} 
-            size={5}
-            ml="2"
-            color="muted.400" />}
+              size={5}
+              ml="2"
+              color="muted.400" />}
             placeholder="Enter your email"
             variant="filled"
           />
           </FormControl>
-          <FormControl mt="1">
+          <FormControl mt="1" ml="5%">
             <FormControl.Label>Password</FormControl.Label>
             <Input w={{
               base: "90%",
-              md: "25%",
             }} 
             type="password"
             borderRadius={10}
             InputLeftElement={<Icon as={<MaterialIcons name="lock" />} 
-            size={5}
-            ml="2"
-            color="muted.400" />}
+              size={5}
+              ml="2"
+              color="muted.400" />}
             placeholder="Enter your password"
             variant="filled"
           />
           </FormControl>          
-          <Text textAlign="right" mt="2">Forgot password?</Text>
+          <Text textAlign="right" mt="2" mr="5%">Forgot password?</Text>
         </Box>
         <Box mt={5} style={styles.box}>
           <Button id="sign-button" style={styles.buttonText} bgColor="danger.400" ml="5%" onPress={() => props.navigation.navigate("SignIn")}>Sign In</Button>
         </Box>
         <Box alignItems="center" style={styles.continueBox}>
-          <Flex direction="row" h={58} p={4}>
-            <Divider bg="muted.500" style={styles.divider} thickness="1" mx="2" mt="2.5" orientation="horizontal" />
+          <Flex direction="row" alignItems="center" justifyContent="space-between" style={{width: '100%'}} >
+            <Divider bg="muted.500" style={styles.divider} thickness="1" mx='2' mt="2.5" orientation="horizontal" />
             <Text color="muted.500">Or continue with</Text>
-            <Divider bg="muted.500" style={styles.divider} width={150} thickness="1" mx="2" mt="2.5" orientation="horizontal" />
+            <Divider bg="muted.500" style={styles.divider} thickness="1" mx="2" mt="2.5" orientation="horizontal" />
           </Flex>
         </Box>
-        <Box>
-          <Flex direction="row" alignItems="center" justifyContent="space-between">
+        <Box mt={10}>
+          <Flex direction="row" alignItems="center" justifyContent="space-between" style={{width: '90%', marginLeft: '5%'}}>
             <Button variant="outline" width={105} height={50} borderRadius={10} borderColor="muted.400" borderStyle="solid" alignItems="center" justifyContent="center" onPress={() => openModal(true, "google")}>
               <Image alt="google" source={require('../../assets/google.png')} />
             </Button>
@@ -236,7 +236,7 @@ const Home = (props: any) => {
                 </Flex>
               </Modal.Body>
               <Modal.Footer style={{height: 50, padding: 0}}>
-                <Box style={{width: '100%', padding: 0, marginTop: -5}}>
+                <Box style={{width: '100%', marginTop: 10}}>
                   <Flex direction="row" alignItems="center" justifyContent="space-around">
                     <Text color="info.400" fontSize={17} fontWeight={400} lineHeight={22} variant="ghost" onPress={() => openModal(!openAlertModal, signOption)}>Cancel</Text>
                     <Text color="info.500" fontSize={17} fontWeight={600} lineHeight={22} variant="ghost" onPress={() => {setStep(2); setSignModal(true)}}>Continue</Text>
@@ -248,7 +248,7 @@ const Home = (props: any) => {
       }
       {
         (signOption === "google" && step === 2) &&
-          <Modal isOpen={signModal} onClose={() => setSignModal(false)} size="lg" safeAreaTop={true}>
+          <Modal isOpen={signModal} onClose={() => setSignModal(false)} size="full" safeAreaTop={true} maxH="100%">
             <Modal.Content marginBottom="0" marginTop="auto" size="lg" style={{width: "100%", height: '110%'}}>
               <Modal.Header>
                 <Flex direction="row" alignItems="center" justifyContent="flex-start">
@@ -300,8 +300,8 @@ const Home = (props: any) => {
       }
       {
         (signOption === "facebook" && step === 2) &&
-          <Modal isOpen={signModal} onClose={() => setSignModal(false)} size="lg" safeAreaTop={true}>
-            <Modal.Content marginBottom="0" marginTop="auto" size="lg" style={{width: "100%", height: '110%'}}>
+          <Modal isOpen={signModal} onClose={() => setSignModal(false)} size="full" safeAreaTop={true} maxH="100%">
+            <Modal.Content marginBottom="0" marginTop="auto" size="lg" style={{width: "100%", height: '98%'}}>
               <Modal.Header>
                 <Flex direction="row" alignItems="center" justifyContent="flex-start">
                   <Text color="info.400" fontSize={17} fontWeight={400} lineHeight={22} variant="ghost" onPress={() => setSignModal(false)}>Cancel</Text>
@@ -343,7 +343,7 @@ const Home = (props: any) => {
 };
 
 const HeaderButtonComponent = (props: any) => (
-  <Image alt="header_mark" source={img} {...props} ml={3} />
+  <Image alt="header_mark" source={img} {...props} ml={3} width={32} />
 );
 
 Home.navigationOptions = (navData: any) => {

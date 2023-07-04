@@ -1,6 +1,12 @@
 {
-  "extends": "expo/tsconfig.base",
+  "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"],
+      "tests": ["test/*"],
+      "@components/*": ["src/components/*"]
+    },
     "strict": true,
     "jsx": "react-native",
     "module": "CommonJS",
