@@ -2,10 +2,6 @@
 
 ## Usage
 
-```sh
-expo init my-app --template @native-base/expo-template-typescript
-```
-
 ## Installation
 ```bash
 yarn install
